@@ -1,20 +1,21 @@
 `use strict`
-//array 0-13 14
-//for loop
-// random number of cust
-//multiply by ave
-//add to array..
+
+var objArr = [];
+var timeArr = ['theLocation','6am: ','7am: ','8am: ','9am: ','10am: ','11am: ','12pm: ','1pm: ','2pm: ','3pm: ','4pm: ','5pm: ','6pm: ','7pm: ','total:  ']
+
+var myTable = document.getElementById('myTable');
+var container = document.createElement('table');
+myTable.appendChild(container);
+var row1 = document.createElement('tr');
+container.appendChild(row1);
 
 
-//  function numCookes(minfun,maxfun,avgfun) {
-    
-//     var randomNum = Math.random() * (maxfun - minfun) + minfun;
-//     randomNum = Math.floor(randomNum);
-//    var numOfSales = randomNum * avgfun;
-//    return numOfSales;
-// }
+for (x=0;x<timeArr.length;x++){
+    var th1 = document.createElement('th');
+    row1.appendChild(th1).textContent = timeArr[x];
+}
 
-var timeArr = ['6am: ','7am: ','8am: ','9am: ','10am: ','11am: ','12pm: ','1pm: ','2pm: ','3pm: ','4pm: ','5pm: ','6pm: ','7pm: ','total:  ']
+
 
 function arrMaker(minfun,maxfun,avgfun){
     var arrfun = [];
@@ -31,7 +32,7 @@ function arrMaker(minfun,maxfun,avgfun){
 
  function sumCalculator (arrsum){
      var prod = 0 
-     var product
+     
      for (y=0;y<=13;y++){
 prod = prod + arrsum[y]
      }
@@ -39,73 +40,128 @@ prod = prod + arrsum[y]
  }
        
 
-console.log(arrMaker(1,10,1.5))
 
-
-
-
-var Seattle = {
-    mincus:23,
-    maxcus:65,
-    avgSales:6.3,
+function Location(name ,mincus , maxcus , avgSales){
+    this.name = name
+    this.mincus=mincus;
+    this.maxcus=maxcus;
+    this.avgSales=avgSales;
+    this.coockes=arrMaker(this.mincus,this.maxcus,this.avgSales);
+    this.sumCoockes=sumCalculator (this.coockes);
+    objArr.push(this);
+    render2(this.name,this.coockes,this.sumCoockes);
 }
-   var Coocke1 = arrMaker (Seattle.mincus , Seattle.maxcus , Seattle.avgSales)
-   console.log(Coocke1)
-   var sum1 = sumCalculator (Coocke1)
-   console.log(sum1)
+
+
+
+  
+
+var seattle = new Location (
+    'seattle',
+    23,
+    65,
+    6.3
+)   ;                       
+
+var Tokyo = new Location (
+    'Tokyo',
+    3,
+    24,
+    1.2
+);
+
+
+var Dubai = new Location (
+    'Dubai',
+    11,
+    38,
+    3.7
+);
+
+
+var Paris = new Location (
+    'Paris',
+    20,
+    38,
+    2.3
+);
+
+
+var Lima = new Location (
+    'Lima',
+    2,
+    16,
+    4.6
+);
+
+console.log(objArr)
+/*
+Location.prototype.render = function (){
+    var row2 = document.createElement('tr');
+    container.appendChild(row2);
+    var td1 = document.createElement('td');
+        row2.appendChild(td1).textContent = this.name;
+    
+        for (n=0;n<this.coockes.length;n++)
+        {
+        var td1 = document.createElement('td');
+        row2.appendChild(td1).textContent = this.coockes[n];
+       }
+    var td1 = document.createElement('td');
+        row2.appendChild(td1).textContent = this.sumCoockes;
+    
+}
+*/
+
+
+function render2 (locationName,locationArr,locationSum){
+var row2 = document.createElement('tr')
+container.appendChild(row2)
+var td1 = document.createElement('td');
+    row2.appendChild(td1).textContent = locationName;
+
+    for (n=0;n<locationArr.length;n++){
+    var td1 = document.createElement('td');
+    row2.appendChild(td1).textContent = locationArr[n];
+}
+var td1 = document.createElement('td');
+    row2.appendChild(td1).textContent = locationSum;
+
+}
+
+// function render3(locationName,locationArr,locationSum){
+//     for(var i=0; ;i++){
+//         var row2 = document.createElement('tr')
+//         container.appendChild(row2)
+//         for(){
+//             var td1 = document.createElement('td');
+//         }
+//     }
+
+//}
+
+//render2 (seattle.name,seattle.coockes,seattle.sumCoockes)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 
 
 
-var Tokyo = {
-    mincus:3,
-    maxcus:24,
-    avgSales:1.2
-}
-var Coocke2 = arrMaker (Seattle.mincus , Seattle.maxcus , Seattle.avgSales)
-var sum2 = sumCalculator (Coocke2)
 
-var Dubai = {
-    mincus:11,
-    maxcus:38,
-    avgSales:3.7
-}
-var Coocke3 = arrMaker (Seattle.mincus , Seattle.maxcus , Seattle.avgSales)
-var sum3 = sumCalculator (Coocke3)
 
-var Paris = {
-    mincus:20,
-    maxcus:38,
-    avgSales:2.3
-}
-var Coocke4 = arrMaker (Seattle.mincus , Seattle.maxcus , Seattle.avgSales)
-var sum4 = sumCalculator (Coocke4)
 
-var Lima = {
-    mincus:2,
-    maxcus:16,
-    avgSales:4.6
-}
-var Coocke5 = arrMaker (Seattle.mincus , Seattle.maxcus , Seattle.avgSales)
-var sum5 = sumCalculator (Coocke5)
 
-function printValues(locationName , CoockeX , idName ,sumx){
 
-var container = document.getElementById(idName);
-container.appendChild(document.createElement('p')).textContent = locationName +': '
-var myUl = document.createElement('ul');
-container.appendChild(myUl);
-
-for (var x=0 ; x<=13 ; x++ ){
-    
-myUl.appendChild(document.createElement('li')).textContent = timeArr[x] + CoockeX[x];
-
-}
-myUl.appendChild(document.createElement('li')).textContent = timeArr[14] + sumx;
-}
-
-printValues('Seattle',Coocke1,'h1',sum1);
-printValues('Tokyo',Coocke2,'h2',sum2);
-printValues('Dubai',Coocke3,'h3',sum3);
-printValues('Paris',Coocke4,'h4',sum4);
-printValues('Lima',Coocke5,'h5',sum5)
