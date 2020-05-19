@@ -129,25 +129,25 @@ var td1 = document.createElement('td');
 
 }
 
-// function render3(locationName,locationArr,locationSum){
-//     for(var i=0; ;i++){
-//         var row2 = document.createElement('tr')
-//         container.appendChild(row2)
-//         for(){
-//             var td1 = document.createElement('td');
-//         }
-//     }
 
-//}
-
-//render2 (seattle.name,seattle.coockes,seattle.sumCoockes)
+var sumColArr = []
+for (var m=0 ; m<14 ; m++){
+var sumcol = 0;
+for (var i=0 ; i<objArr.length ; i++){
+sumcol = sumcol + objArr[i].coockes[m];
+}
+sumColArr.push(sumcol)
+}
 
 
 
+var sumTot =0
+for (var x = 0 ; x<objArr.length ; x++){
+sumTot = sumTot + objArr[x].sumCoockes
+}
 
 
-
-
+render2 ('Total :',sumColArr,sumTot)
 
 
 
