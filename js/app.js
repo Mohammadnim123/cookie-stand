@@ -94,7 +94,7 @@ var Lima = new Location (
     4.6
 );
 
-console.log(objArr)
+
 /*
 Location.prototype.render = function (){
     var row2 = document.createElement('tr');
@@ -130,6 +130,64 @@ var td1 = document.createElement('td');
 }
 
 
+var locationsForm = document.getElementById('locationData');
+locationsForm.addEventListener('submit', function(event){
+    event.preventDefault();
+
+   container.removeChild(container.lastChild)
+
+    var locationNameValue = event.target.locationName.value;
+  console.log(locationNameValue);
+
+  var minValue = event.target.min.value;
+  console.log(minValue);
+
+  var maxValue = event.target.max.value;
+  console.log(maxValue);
+
+  var avgValue = event.target.avg.value;
+  console.log(avgValue);
+
+
+var newLocation = new Location (
+    locationNameValue,
+    minValue,
+    maxValue,
+    avgValue
+);
+
+
+var sumColArr = []
+for (var m=0 ; m<14 ; m++){
+var sumcol = 0;
+for (var i=0 ; i<objArr.length ; i++){
+sumcol = sumcol + objArr[i].coockes[m];
+}
+sumColArr.push(sumcol)
+}
+
+
+
+var sumTot =0
+for (var x = 0 ; x<objArr.length ; x++){
+sumTot = sumTot + objArr[x].sumCoockes
+}
+
+
+
+render2 ('Total :',sumColArr,sumTot)
+
+document.getElementById("locationData").reset();
+console.log(objArr)
+
+})
+
+
+
+
+
+
+
 var sumColArr = []
 for (var m=0 ; m<14 ; m++){
 var sumcol = 0;
@@ -148,6 +206,9 @@ sumTot = sumTot + objArr[x].sumCoockes
 
 
 render2 ('Total :',sumColArr,sumTot)
+
+
+console.log(objArr)
 
 
 
