@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pangolin&family=Roboto+Mono&display=swap');
 header {
-    background-image:url(img/wood.jpg);
+    background-image:url(wood.jpg);
     background-size:cover ;
     background-repeat: no-repeat;
     text-align: center;
@@ -140,7 +140,7 @@ color: white;
 footer{
     text-align: center;
     font-size: 20px;
-    background-image:url(img/wood.jpg);
+    background-image:url(wood.jpg);
     padding: 30px;
     margin-top: 50px;
 }
